@@ -1,6 +1,9 @@
 package org.example;
 
 
+import com.mashape.unirest.http.HttpResponse;
+import com.mashape.unirest.http.Unirest;
+import com.mashape.unirest.request.GetRequest;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -11,9 +14,27 @@ import java.net.URL;
 import java.util.Random;
 
 public class JokesAPI {
-    public JokesAPI( ) {
-        returnJoke();
+    public JokesAPI() {
+        joke();
     }
+
+    public static String joke() {
+        String joke = "";
+        try {
+            GetRequest getRequest = Unirest.get("https://v2.jokeapi.dev/joke/any");
+            HttpResponse<String> response = getRequest.asString();
+            if(response.getStatus() == 200 || response.getStatus() == 201){
+                String json = response.getBody();
+                joke = parseJokeFromJson(json);
+                System.out.println(joke);
+            }
+        } catch (Exception e) {
+
+        }
+        return joke;
+
+    }
+
     public static String returnJoke() {
         Random random = new Random();
         String[] jokes = {"Christmas", "Spooky", "Pun", "Dark", "Programming", "Misc", "Any"};
@@ -52,7 +73,6 @@ public class JokesAPI {
     private static String parseJokeFromJson(String jsonResponse) {
         String joke = "";
         try {
-            // Parse the JSON response
             JSONObject jsonObject = new JSONObject(jsonResponse);
             try {
                 joke = jsonObject.getString("joke");

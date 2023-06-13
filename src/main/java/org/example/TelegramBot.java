@@ -55,7 +55,8 @@ public class TelegramBot extends TelegramLongPollingBot {
                 case ("J") -> {
                     responder.updateSupportStatus('J');
                     //sendMessage.setText(" Great! JokeAPI: ");
-                    sendMessage.setText(JokesAPI.returnJoke());
+//                    sendMessage.setText(JokesAPI.returnJoke());
+                    sendMessage.setText(JokesAPI.joke());
                     //sendMessage.setText(deleteLater("J"));
                 }
                 case ("N") -> {
@@ -199,7 +200,6 @@ public class TelegramBot extends TelegramLongPollingBot {
     private static String cats(String jsonResponse) {
         String joke = "";
         try {
-            // Parse the JSON response
             JSONObject jsonObject = new JSONObject(jsonResponse);
             try {
                 joke = jsonObject.getString("fact");
