@@ -1,5 +1,7 @@
 package org.example;
 
+import org.glassfish.grizzly.http.server.Constants;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -11,7 +13,7 @@ import java.util.Objects;
 
 public class Panel extends JPanel {
     private Image background;
-    private static final int HEIGHTBUTTON = 30,WIDTHBUTTON=180,DALTE=10;
+    private static final int HEIGHT_BUTTON = 30,WIDTH_BUTTON=180,DELTA=10,X_LINE=10,Y_LINE=440,WIDTH_LINE=480,HEIGHT_LINE=20;
 
     public Panel(){
         addBackgroundPicture();
@@ -19,12 +21,21 @@ public class Panel extends JPanel {
 //        this.setLayout(new GridLayout(4, 1, 5, 5));
 //        this.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder("System administrator"),
 //                BorderFactory.createEmptyBorder(10, 5, 2, 5)));
+        addByLine();
         buttonAndAction();
 
     }
+    public void addByLine() {
+        JLabel by = new JLabel("@By Avihay Navon, David Even-Haim, Omer Hayoon, Avihay Ben-Ami,Idan Zakheym AAC-CS 2023");
+        by.setBounds(X_LINE, Y_LINE, WIDTH_LINE, HEIGHT_LINE);
+        by.setFont(new Font("Arial", Font.BOLD, 9));
+        by.setVisible(true);
+        by.setForeground(Color.BLACK);
+        this.add(by);
+    }
     public void buttonAndAction(){
         JButton managementActivities = new JButton("Management Activities ");
-        managementActivities.setBounds(HEIGHTBUTTON,HEIGHTBUTTON,WIDTHBUTTON,HEIGHTBUTTON);
+        managementActivities.setBounds(HEIGHT_BUTTON,HEIGHT_BUTTON,WIDTH_BUTTON,HEIGHT_BUTTON);
         managementActivities.setVisible(true);
         managementActivities.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -33,7 +44,7 @@ public class Panel extends JPanel {
 
         });
         JButton userStatistics = new JButton("User Statistics ");
-        userStatistics.setBounds(HEIGHTBUTTON,managementActivities.getY()+HEIGHTBUTTON+DALTE,WIDTHBUTTON,HEIGHTBUTTON);
+        userStatistics.setBounds(HEIGHT_BUTTON,managementActivities.getY()+HEIGHT_BUTTON+DELTA,WIDTH_BUTTON,HEIGHT_BUTTON);
         userStatistics.setVisible(true);
         userStatistics.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -42,7 +53,7 @@ public class Panel extends JPanel {
         });
 
         JButton activityHistory = new JButton("Activity history ");
-        activityHistory.setBounds(HEIGHTBUTTON,userStatistics.getY()+HEIGHTBUTTON+DALTE,WIDTHBUTTON,HEIGHTBUTTON);
+        activityHistory.setBounds(HEIGHT_BUTTON,userStatistics.getY()+HEIGHT_BUTTON+DELTA,WIDTH_BUTTON,HEIGHT_BUTTON);
         activityHistory.setVisible(true);
         activityHistory.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -50,7 +61,7 @@ public class Panel extends JPanel {
             }
         });
         JButton graph = new JButton("graph ");
-        graph.setBounds(HEIGHTBUTTON,activityHistory.getY()+HEIGHTBUTTON+DALTE,WIDTHBUTTON,HEIGHTBUTTON);
+        graph.setBounds(HEIGHT_BUTTON,activityHistory.getY()+HEIGHT_BUTTON+DELTA,WIDTH_BUTTON,HEIGHT_BUTTON);
         graph.setVisible(true);
         graph.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
