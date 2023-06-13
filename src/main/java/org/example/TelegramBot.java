@@ -47,18 +47,19 @@ public class TelegramBot extends TelegramLongPollingBot {
                     sendMessage.setText(" Great! Weather data:  ");
                 }
                 case ("C") -> {
-//                    responder.updateSupportStatus('F');
-//                    sendMessage.setText(" Great! Fixer.io API: ");
-                    sendMessage.setText(deleteLater("C"));
-
+                    sendMessage.setText(CatFactAPI.catFactAPI());
                 }
                 case ("J") -> {
                     responder.updateSupportStatus('J');
-                    //sendMessage.setText(" Great! JokeAPI: ");
-//                    sendMessage.setText(JokesAPI.returnJoke());
+//                    newButton(sendMessage, update);
                     sendMessage.setText(JokesAPI.joke());
-                    //sendMessage.setText(deleteLater("J"));
+                    InlineKeyboardButton jokeButton1 = new InlineKeyboardButton("JokeAPI1 "); // בניית כפתור
+                    jokeButton1.setCallbackData("M");// גורם לפונקצייה לפעול שוב ולהחזיר את התשובה שלחץ המשתמש
+                           this.topRow = Arrays.asList(this.jokeButton1);// בניית רשימת כפתורים והכנסה שני כפתורי
+                    showButtons(sendMessage, this.topRow);
+
                 }
+
                 case ("N") -> {
                     responder.updateSupportStatus('N');
                     sendMessage.setText(" Great! NewsAPI:  ");
@@ -95,6 +96,20 @@ public class TelegramBot extends TelegramLongPollingBot {
 
     }
 
+//    private void newButton(SendMessage sendMessage, Update update) {
+//        sendMessage.setText("What .... ");
+//        System.out.println();
+//        this.topRow = Arrays.asList(this.jokeButton1);// בניית רשימת כפתורים והכנסה שני כפתורים
+//        showButtons(sendMessage, this.topRow);
+//
+//        String callBack1 = update.getCallbackQuery().getData();
+//        System.out.println(callBack1);
+//        if (callBack1.equals("M")) {
+//            System.out.println(callBack1);
+//            JokesAPI.joke();
+//        }
+//    }
+
 
     private long getChatId(Update update) {
         long chatId;
@@ -121,96 +136,5 @@ public class TelegramBot extends TelegramLongPollingBot {
     }
 
 
-    public String deleteLater(String site) {
-        Random random = new Random();
-        String apiUrl = null;
-        switch (site) {
-            case ("J") -> {
-                String[] jokes = {"Christmas", "Spooky", "Pun", "Dark", "Programming", "Misc", "Any"};
-                apiUrl = "https://v2.jokeapi.dev/joke/" + jokes[random.nextInt(jokes.length)];
-            }
-            case ("C") -> apiUrl = "https://catfact.ninja/fact?max_length=140";
-
-        }
-
-        // Replace with the desired API URL
-        String joke = "";
-
-        try {
-            URL url = new URL(apiUrl);
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setRequestMethod("GET");
-
-            int responseCode = connection.getResponseCode();
-            if (responseCode == HttpURLConnection.HTTP_OK) {
-                BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-                StringBuilder response = new StringBuilder();
-                String line;
-
-                while ((line = reader.readLine()) != null) {
-                    response.append(line);
-                }
-                reader.close();
-
-                String jsonResponse = response.toString();
-
-                // Parse the JSON response
-                switch (site) {
-                    case ("J") -> joke = parseJokeFromJson(jsonResponse);
-                    case ("C") -> joke = cats(jsonResponse);
-
-                }
-                System.out.println(joke); // or store it in a variable or use it as needed
-            } else {
-                System.out.println("Failed to fetch joke. Response Code: " + responseCode);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return joke;
-
-    }
-    //DELETE LATER !! :
-
-
-    private static String parseJokeFromJson(String jsonResponse) {
-        String joke = "";
-        try {
-            // Parse the JSON response
-            JSONObject jsonObject = new JSONObject(jsonResponse);
-            try {
-                joke = jsonObject.getString("joke");
-            } catch (Exception e) {
-                System.out.println("joke didnt work trying setup");
-            }
-            try {
-                joke = jsonObject.getString("setup");
-                joke += " " + jsonObject.getString("delivery");
-
-            } catch (Exception e) {
-                System.out.println("Setup worked");
-            }
-            return joke;
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    private static String cats(String jsonResponse) {
-        String joke = "";
-        try {
-            JSONObject jsonObject = new JSONObject(jsonResponse);
-            try {
-                joke = jsonObject.getString("fact");
-            } catch (Exception e) {
-                System.out.println("Cat fact doesn't work");
-            }
-            return joke;
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
 
 }
