@@ -7,7 +7,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ApiPath {
-    public static String catFact(String requestAdress, String fact) {
+
+    public static String generateAPI(String requestAdress, String fact) {
         String joke = "";
         try {
             GetRequest getRequest = Unirest.get(requestAdress);

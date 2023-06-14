@@ -7,12 +7,10 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMa
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
-import java.io.IOException;
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 public class TelegramBot extends TelegramLongPollingBot {
@@ -53,13 +51,13 @@ public class TelegramBot extends TelegramLongPollingBot {
                         sendMessage.setText("Sure, here is a Joke fact -\n"+JokesAPI.joke());
                     }
 
-                    case ("N") -> {
-                        responder.updateSupportStatus('N');
-                        sendMessage.setText(" Great! NewsAPI:  ");
+                    case ("I") -> {
+                        responder.updateSupportStatus('I');
+                        sendMessage.setText("Sure, here is your ip -\n"+ ipAPI.ipAPI());
                     }
                     case ("F") -> {
                         responder.updateSupportStatus('C');
-                        sendMessage.setText(" Great! Covid-19 Data API: ");
+                        sendMessage.setText("Sure, here is quote -\n"+ QuoteAPI.ipAPI());
                     }
                 }
 
@@ -77,18 +75,18 @@ public class TelegramBot extends TelegramLongPollingBot {
                     fixerButton.setCallbackData("C");// גורם לפונקצייה לפעול שוב ולהחזיר את התשובה שלחץ המשתמש
                     InlineKeyboardButton jokeButton = new InlineKeyboardButton("Jokes"); // בניית כפתור
                     jokeButton.setCallbackData("J");// גורם לפונקצייה לפעול שוב ולהחזיר את התשובה שלחץ המשתמש
-                    InlineKeyboardButton newsButton = new InlineKeyboardButton("NewsAPI"); // בניית כפתור
-                    newsButton.setCallbackData("N");// גורם לפונקצייה לפעול שוב ולהחזיר את התשובה שלחץ המשתמש
+                    InlineKeyboardButton ipButton = new InlineKeyboardButton("IP"); // בניית כפתור
+                    ipButton.setCallbackData("I");// גורם לפונקצייה לפעול שוב ולהחזיר את התשובה שלחץ המשתמש
                     InlineKeyboardButton covidButton = new InlineKeyboardButton("Covid-19 Data API"); // בניית כפתור
                     covidButton.setCallbackData("F");// גורם לפונקצייה לפעול שוב ולהחזיר את התשובה שלחץ המשתמש
-                    List<InlineKeyboardButton> topRow = Arrays.asList(numbersButton, fixerButton, jokeButton, newsButton, covidButton);// בניית רשימת כפתורים והכנסה שני כפתורים
+                    List<InlineKeyboardButton> topRow = Arrays.asList(numbersButton, fixerButton, jokeButton, ipButton, covidButton);// בניית רשימת כפתורים והכנסה שני כפתורים
                     showButtons(sendMessage, topRow);// מתודה קבועה שניתן להיעזר להכנת הכפתורים
 
 
                 }
             }
             try {
-                Thread.sleep(2000);
+                Thread.sleep(500);
                 send(sendMessage);
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -182,9 +180,6 @@ public class TelegramBot extends TelegramLongPollingBot {
             throw new RuntimeException(e);
         }
     }
-
-
-
 
 
 }

@@ -5,9 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="30bc2d16-9211-47aa-b9fc-92e3b1147299" name="Changes" comment=".">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/NumbersFactAPI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/ManagementActivities.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/QuoteAPI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/ipAPI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ApiPath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ApiPath.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/CatFactAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/CatFactAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Panel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Panel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/TelegramBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/TelegramBot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Window.java" afterDir="false" />
     </list>
     <list id="143e32f5-66d2-4cbe-b00e-e9adf012acde" name="Changes by אביחי" comment="">
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/TelegramBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/TelegramBot.java" afterDir="false" />
@@ -30,18 +37,17 @@
   <component name="LineStatusTrackerManager">
     <file path="$PROJECT_DIR$/src/main/java/org/example/TelegramBot.java">
       <ranges>
-        <range start1="2" end1="4" start2="2" end2="2" changelist="30bc2d16-9211-47aa-b9fc-92e3b1147299" />
-        <range start1="11" end1="15" start2="9" end2="9" changelist="30bc2d16-9211-47aa-b9fc-92e3b1147299" />
-        <range start1="22" end1="22" start2="16" end2="17" changelist="143e32f5-66d2-4cbe-b00e-e9adf012acde" />
-        <range start1="46" end1="47" start2="41" end2="42" changelist="30bc2d16-9211-47aa-b9fc-92e3b1147299" />
-        <range start1="53" end1="54" start2="48" end2="48" changelist="30bc2d16-9211-47aa-b9fc-92e3b1147299" />
-        <range start1="55" end1="63" start2="49" end2="49" changelist="30bc2d16-9211-47aa-b9fc-92e3b1147299" />
-        <range start1="81" end1="85" start2="67" end2="72" changelist="30bc2d16-9211-47aa-b9fc-92e3b1147299" />
-        <range start1="86" end1="87" start2="73" end2="74" changelist="30bc2d16-9211-47aa-b9fc-92e3b1147299" />
-        <range start1="92" end1="93" start2="79" end2="80" changelist="30bc2d16-9211-47aa-b9fc-92e3b1147299" />
-        <range start1="109" end1="133" start2="96" end2="97" changelist="143e32f5-66d2-4cbe-b00e-e9adf012acde" />
-        <range start1="134" end1="143" start2="98" end2="98" changelist="143e32f5-66d2-4cbe-b00e-e9adf012acde" />
-        <range start1="144" end1="167" start2="99" end2="99" changelist="143e32f5-66d2-4cbe-b00e-e9adf012acde" />
+        <range start1="9" end1="15" start2="9" end2="13" changelist="30bc2d16-9211-47aa-b9fc-92e3b1147299" />
+        <range start1="21" end1="21" start2="19" end2="20" changelist="143e32f5-66d2-4cbe-b00e-e9adf012acde" />
+        <range start1="55" end1="58" start2="54" end2="57" changelist="30bc2d16-9211-47aa-b9fc-92e3b1147299" />
+        <range start1="61" end1="62" start2="60" end2="61" changelist="30bc2d16-9211-47aa-b9fc-92e3b1147299" />
+        <range start1="79" end1="81" start2="78" end2="80" changelist="30bc2d16-9211-47aa-b9fc-92e3b1147299" />
+        <range start1="83" end1="84" start2="82" end2="83" changelist="30bc2d16-9211-47aa-b9fc-92e3b1147299" />
+        <range start1="90" end1="91" start2="89" end2="90" changelist="30bc2d16-9211-47aa-b9fc-92e3b1147299" />
+        <range start1="100" end1="124" start2="99" end2="100" changelist="143e32f5-66d2-4cbe-b00e-e9adf012acde" />
+        <range start1="125" end1="134" start2="101" end2="101" changelist="143e32f5-66d2-4cbe-b00e-e9adf012acde" />
+        <range start1="135" end1="158" start2="102" end2="102" changelist="143e32f5-66d2-4cbe-b00e-e9adf012acde" />
+        <range start1="184" end1="187" start2="128" end2="128" changelist="30bc2d16-9211-47aa-b9fc-92e3b1147299" />
       </ranges>
     </file>
   </component>
@@ -130,7 +136,14 @@
       <option name="project" value="LOCAL‎" />
       <updated>1686686581728</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL‎-00005" summary=".">
+      <created>1686766381403</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL‎-00005" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1686766381403</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -150,16 +163,5 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="." />
     <option name="LAST_COMMIT_MESSAGE" value="." />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/TelegramBot.java</url>
-          <line>104</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
