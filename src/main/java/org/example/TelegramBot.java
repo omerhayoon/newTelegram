@@ -1,7 +1,5 @@
 package org.example;
 
-import org.json.JSONException;
-import org.json.JSONObject;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
@@ -9,10 +7,11 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMa
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import java.io.IOException;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
 
@@ -44,23 +43,14 @@ public class TelegramBot extends TelegramLongPollingBot {
                 switch (callBack) {
                     case ("W") -> {
                         responder.updateSupportStatus('W');
-                        sendMessage.setText(" Great! Weather data:  ");
+                        sendMessage.setText("Sure, here is a Number fact -\n"+NumbersFactAPI.NumbersFactAPI());
                     }
                     case ("C") -> {
-                        sendMessage.setText(CatFactAPI.catFactAPI());
+                        sendMessage.setText("Sure, here is a Cat fact -\n"+CatFactAPI.catFactAPI());
                     }
                     case ("J") -> {
                         responder.updateSupportStatus('J');
-//                    newButton(sendMessage, update);
-                        sendMessage.setText(JokesAPI.joke());
-//                        InlineKeyboardButton jokeButton1 = new InlineKeyboardButton("JokeAPI1 "); // בניית כפתור
-//                        jokeButton1.setCallbackData("M");// גורם לפונקצייה לפעול שוב ולהחזיר את התשובה שלחץ המשתמש
-//                        List<InlineKeyboardButton> topRow1 = Arrays.asList(jokeButton1);// בניית רשימת כפתורים והכנסה שני כפתורי
-//                        if(update.getCallbackQuery().getData().equals(jokeButton1.getCallbackData())){
-//                            showButtons(sendMessage, topRow1);
-//
-//                        }
-
+                        sendMessage.setText("Sure, here is a Joke fact -\n"+JokesAPI.joke());
                     }
 
                     case ("N") -> {
@@ -79,18 +69,19 @@ public class TelegramBot extends TelegramLongPollingBot {
                 if (responder == null) { // במידה ולא דיברנו תישמור את הכתובת והתגובה
                     responder = new Responder(chatId);
                     this.responderMap.put(chatId, responder);
-                    sendMessage.setText("What service do you want to receive? "); // כותב את ההודעה
-                    InlineKeyboardButton weatherButton = new InlineKeyboardButton("Weather data"); // בניית כפתור
-                    weatherButton.setCallbackData("W");// גורם לפונקצייה לפעול שוב ולהחזיר את התשובה שלחץ המשתמש
-                    InlineKeyboardButton fixerButton = new InlineKeyboardButton("CatsFact API"); // בניית כפתור
+                    sendMessage.setText("Hey, Welcome to my facts and jokes bot!"+"\n"+ // כותב את ההודעה
+                    "Please choose any subject to get a fact/jokes about!");
+                    InlineKeyboardButton numbersButton = new InlineKeyboardButton("Numbers"); // בניית כפתור
+                    numbersButton.setCallbackData("W");// גורם לפונקצייה לפעול שוב ולהחזיר את התשובה שלחץ המשתמש
+                    InlineKeyboardButton fixerButton = new InlineKeyboardButton("Cats"); // בניית כפתור
                     fixerButton.setCallbackData("C");// גורם לפונקצייה לפעול שוב ולהחזיר את התשובה שלחץ המשתמש
-                    InlineKeyboardButton jokeButton = new InlineKeyboardButton("JokeAPI "); // בניית כפתור
+                    InlineKeyboardButton jokeButton = new InlineKeyboardButton("Jokes"); // בניית כפתור
                     jokeButton.setCallbackData("J");// גורם לפונקצייה לפעול שוב ולהחזיר את התשובה שלחץ המשתמש
                     InlineKeyboardButton newsButton = new InlineKeyboardButton("NewsAPI"); // בניית כפתור
                     newsButton.setCallbackData("N");// גורם לפונקצייה לפעול שוב ולהחזיר את התשובה שלחץ המשתמש
                     InlineKeyboardButton covidButton = new InlineKeyboardButton("Covid-19 Data API"); // בניית כפתור
                     covidButton.setCallbackData("F");// גורם לפונקצייה לפעול שוב ולהחזיר את התשובה שלחץ המשתמש
-                    List<InlineKeyboardButton> topRow = Arrays.asList(weatherButton, fixerButton, jokeButton, newsButton, covidButton);// בניית רשימת כפתורים והכנסה שני כפתורים
+                    List<InlineKeyboardButton> topRow = Arrays.asList(numbersButton, fixerButton, jokeButton, newsButton, covidButton);// בניית רשימת כפתורים והכנסה שני כפתורים
                     showButtons(sendMessage, topRow);// מתודה קבועה שניתן להיעזר להכנת הכפתורים
 
 
@@ -168,21 +159,6 @@ public class TelegramBot extends TelegramLongPollingBot {
 
     }
 
-//    private void newButton(SendMessage sendMessage, Update update) {
-//        sendMessage.setText("What .... ");
-//        System.out.println();
-//        this.topRow = Arrays.asList(this.jokeButton1);// בניית רשימת כפתורים והכנסה שני כפתורים
-//        showButtons(sendMessage, this.topRow);
-//
-//        String callBack1 = update.getCallbackQuery().getData();
-//        System.out.println(callBack1);
-//        if (callBack1.equals("M")) {
-//            System.out.println(callBack1);
-//            JokesAPI.joke();
-//        }
-//    }
-
-
     private long getChatId(Update update) {
         long chatId;
         if (update.hasCallbackQuery()) { //אם הייתה לחיצה על כפתור
@@ -206,6 +182,8 @@ public class TelegramBot extends TelegramLongPollingBot {
             throw new RuntimeException(e);
         }
     }
+
+
 
 
 

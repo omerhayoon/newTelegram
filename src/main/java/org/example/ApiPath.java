@@ -38,4 +38,18 @@ public class ApiPath {
         }
         return null;
     }
+    public static String emptyAPI(String REQUEST_ADRESS) {
+        String fact = "";
+        try {
+            GetRequest getRequest = Unirest.get(REQUEST_ADRESS);
+            HttpResponse<String> response = getRequest.asString();
+            if(response.getStatus() == 200 || response.getStatus() == 201){
+                fact = response.getBody();
+                System.out.println(fact);
+            }
+        } catch (Exception e) {
+
+        }
+        return fact;
+    }
 }
