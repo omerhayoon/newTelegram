@@ -22,6 +22,7 @@ public class JokesAPI {
         String joke = "";
         try {
             GetRequest getRequest = Unirest.get("https://v2.jokeapi.dev/joke/any");
+
             HttpResponse<String> response = getRequest.asString();
             if(response.getStatus() == 200 || response.getStatus() == 201){
                 String json = response.getBody();

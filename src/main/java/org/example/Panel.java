@@ -18,9 +18,6 @@ public class Panel extends JPanel {
     public Panel(){
         addBackgroundPicture();
         this.setLayout(null);
-//        this.setLayout(new GridLayout(4, 1, 5, 5));
-//        this.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder("System administrator"),
-//                BorderFactory.createEmptyBorder(10, 5, 2, 5)));
         addByLine();
         buttonAndAction();
 
@@ -40,6 +37,10 @@ public class Panel extends JPanel {
         managementActivities.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Management Activities");
+                removeAll();
+                add(new ManagementActivities(0,0,500,500));
+                revalidate();
+                repaint();
             }
 
         });
