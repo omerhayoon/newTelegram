@@ -115,8 +115,6 @@ public class TelegramBot extends TelegramLongPollingBot {
     }
 
 
-
-
     public void send(SendMessage sendMessage) {
         try {
             execute(sendMessage);
@@ -124,9 +122,6 @@ public class TelegramBot extends TelegramLongPollingBot {
             throw new RuntimeException(e);
         }
     }
-
-
-
 
 
 }

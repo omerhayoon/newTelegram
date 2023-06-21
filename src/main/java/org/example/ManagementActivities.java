@@ -27,7 +27,6 @@ public class ManagementActivities extends JPanel {
 
         this.buttons = new ArrayList<>();
 
-        // Create buttons
         JToggleButton ipAPIButton = createButton("ipAPI");
         JToggleButton catsAPIButton = createButton("catsAPI");
         JToggleButton jokesAPIButton = createButton("jokesAPI");
@@ -40,11 +39,7 @@ public class ManagementActivities extends JPanel {
         JButton returnButton = new JButton("Return");
         returnButton.setBounds(50, 400, 100, 40);
         returnButton.setVisible(true);
-        returnButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-               window.mainPanel();
-            }
-        });
+        returnButton.addActionListener(e -> window.mainPanel());
         this.add(returnButton);
     }
 
@@ -60,45 +55,36 @@ public class ManagementActivities extends JPanel {
 
     private JToggleButton createButton(String name) {
         JToggleButton button = new JToggleButton(name);
-        button.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                if (button.isSelected()) {
-                    if (currentSelectionCount < maxSelectionCount) {
-                        // Button pressed action
-                        //createButtonInTelegram(button.getText)
-                        InlineKeyboardButton numbersButton = new InlineKeyboardButton(button.getText()); // בניית כפתור
-                        numbersButton.setCallbackData(button.getText());
-                        telegramButtonList.add(numbersButton);
+        button.addActionListener(e -> {
+            if (button.isSelected()) {
+                if (currentSelectionCount < maxSelectionCount) {
+                    // Button pressed action
+                    InlineKeyboardButton numbersButton = new InlineKeyboardButton(button.getText()); // בניית כפתור
+                    numbersButton.setCallbackData(button.getText());
+                    telegramButtonList.add(numbersButton);
 
-                        currentSelectionCount++;
-                        // Perform action when button is pressed
-                        System.out.println(button.getText() + " pressed");
-                        telegramButtonList.forEach(System.out::println);
-
-                    } else {
-                        button.setSelected(false); // Deselect the button if maximum selection count is reached
-                    }
-                } else {
-                    // Button unpressed action
-                    currentSelectionCount--;
-                    // Perform action when button is unpressed
-//                    for(InlineKeyboardButton telegramButtons : telegramButtonList){
-//                        if(button.getText().equals(telegramButtons.getText())){
-//                            telegramButtonList.remove(telegramButtons);
-//                        }
-//                    }
-                    Iterator<InlineKeyboardButton> iterator = telegramButtonList.iterator();
-                    while (iterator.hasNext()) {
-                        InlineKeyboardButton telegramButton = iterator.next();
-                        if (button.getText().equals(telegramButton.getText())) {
-                            iterator.remove();
-                        }
-                    }
-                    System.out.println(button.getText() + " unpressed");
+                    currentSelectionCount++;
+                    // Perform action when button is pressed
+                    System.out.println(button.getText() + " pressed");
                     telegramButtonList.forEach(System.out::println);
 
-
+                } else {
+                    button.setSelected(false); // Deselect the button if maximum selection count is reached
                 }
+            } else {
+                // Button unpressed action
+                currentSelectionCount--;
+                // Perform action when button is unpressed
+
+                Iterator<InlineKeyboardButton> iterator = telegramButtonList.iterator();
+                while (iterator.hasNext()) {
+                    InlineKeyboardButton telegramButton = iterator.next();
+                    if (button.getText().equals(telegramButton.getText())) {
+                        iterator.remove();
+                    }
+                }
+                System.out.println(button.getText() + " unpressed");
+                telegramButtonList.forEach(System.out::println);
             }
         });
         buttons.add(button);
