@@ -12,5 +12,6 @@ public class Main {
             telegramBotsApi.registerBot(new TelegramBot());
         }catch (TelegramApiException e){
         }
+        new Window();
     }
 }
