@@ -40,46 +40,46 @@ public class TelegramBot extends TelegramLongPollingBot {
         sendMessage.setReplyMarkup(inlineKeyboardMarkup); // מכניס את מחלקת המקלדת עם המטריצה
     }
 
-
     public void onUpdateReceived(Update update) {
-//        if(update.hasMessage() && update.getMessage().hasText()){
-//            System.out.println(update.getMessage().getText());
-//        }
-        System.out.println(update.getMessage().getFrom().getFirstName()+": "+update.getMessage().getText());
-
+//        System.out.println(update.getMessage().getFrom().getFirstName());
         long chatId = getChatId(update);
-        SendMessage sendMessage = new SendMessage();
+        SendMessage sendMessage = new SendMessage();// פותח משתנה של הודעה
         Responder responder = this.responderMap.get(chatId);
-        sendMessage.setChatId(chatId); // נותן להודעה כתובת
+        sendMessage.setChatId(chatId);// לשלוח את ההודעה לכתובת הרצוייה
         if (update.hasCallbackQuery()) {// אם בוצע לחיצה בכפתור
             String callBack = update.getCallbackQuery().getData();
             switch (callBack) {
-                case ("W") -> {
-                    responder.updateSupportStatus('W');
-                    //sendMessage.setText("Sure, here is a Number fact -\n" + NumbersFactAPI.NumbersFactAPI());
-                    sendMessage.setText("Sure, here is a Number fact");
+                case ("weatherAPI") -> {
+                    //responder.updateSupportStatus('W');
+                    sendMessage.setText("Sure, here is a Number fact -\n" + NumbersFactAPI.NumbersFactAPI());
+                    showButtons(sendMessage, ManagementActivities.telegramButtonList);
                 }
-                case ("C") -> {
-                   // sendMessage.setText("Sure, here is a Cat fact -\n" + CatFactAPI.catFactAPI());
-                    sendMessage.setText("Sure, here is a Cat fact");
+                case ("catsAPI") -> {
+                    sendMessage.setText("Sure, here is a Cat fact -\n" + CatFactAPI.catFactAPI());
+                    showButtons(sendMessage, ManagementActivities.telegramButtonList);
                 }
-                case ("J") -> {
-                    responder.updateSupportStatus('J');
-                    //sendMessage.setText("Sure, here is a Joke fact -\n" + JokesAPI.joke());
-                    sendMessage.setText("Sure, here is a Joke fact");
+                case ("jokesAPI") -> {
+                    // responder.updateSupportStatus('J');
+                    sendMessage.setText("Sure, here is a Joke fact -\n" + JokesAPI.jokeAPI());
+                    showButtons(sendMessage, ManagementActivities.telegramButtonList);
                 }
 
-                case ("I") -> {
-                    responder.updateSupportStatus('I');
-                    //sendMessage.setText("Sure, here is your ip -\n" + ipAPI.ipAPI());
-                    sendMessage.setText("Sure, here is your ip");
+                case ("ipAPI") -> {
+                    //responder.updateSupportStatus('I');
+                    sendMessage.setText("Sure, here is your ip -\n" + ipAPI.ipAPI());
+                    showButtons(sendMessage, ManagementActivities.telegramButtonList);
                 }
-                case ("F") -> {
-                    responder.updateSupportStatus('C');
+                case ("factAPI") -> {
+                    //responder.updateSupportStatus('C');
                     sendMessage.setText(" Great! Covid-19 Data API: ");
+                    showButtons(sendMessage, ManagementActivities.telegramButtonList);
+                }
+                case ("Refresh button") -> {
+                    showButtons(sendMessage, ManagementActivities.telegramButtonList);
+                    System.out.println(ManagementActivities.telegramButtonList.size() + " size");
+                    System.out.println("Pressed refresh");
                 }
             }
-
 
         } else {
             sendMessage.setChatId(chatId);// משתנה של ההודעה שולח לכתובת הרצוייה
@@ -88,27 +88,20 @@ public class TelegramBot extends TelegramLongPollingBot {
                 this.responderMap.put(chatId, responder);
                 sendMessage.setText("Hey, Welcome to my facts and jokes bot!" + "\n" + // כותב את ההודעה
                         "Please choose any subject to get a fact/jokes about!");
-                InlineKeyboardButton numbersButton = new InlineKeyboardButton("Numbers"); // בניית כפתור
-                numbersButton.setCallbackData("W");// גורם לפונקצייה לפעול שוב ולהחזיר את התשובה שלחץ המשתמש
-                InlineKeyboardButton fixerButton = new InlineKeyboardButton("Cats"); // בניית כפתור
-                fixerButton.setCallbackData("C");// גורם לפונקצייה לפעול שוב ולהחזיר את התשובה שלחץ המשתמש
-                InlineKeyboardButton jokeButton = new InlineKeyboardButton("Jokes"); // בניית כפתור
-                jokeButton.setCallbackData("J");// גורם לפונקצייה לפעול שוב ולהחזיר את התשובה שלחץ המשתמש
-                InlineKeyboardButton ipButton = new InlineKeyboardButton("IP"); // בניית כפתור
-                ipButton.setCallbackData("I");// גורם לפונקצייה לפעול שוב ולהחזיר את התשובה שלחץ המשתמש
-                InlineKeyboardButton covidButton = new InlineKeyboardButton("Covid-19 Data API"); // בניית כפתור
-                covidButton.setCallbackData("F");// גורם לפונקצייה לפעול שוב ולהחזיר את התשובה שלחץ המשתמש
-                List<InlineKeyboardButton> topRow = Arrays.asList(numbersButton, fixerButton, jokeButton, ipButton, covidButton);// בניית רשימת כפתורים והכנסה שני כפתורים
-                showButtons(sendMessage, topRow);// מתודה קבועה שניתן להיעזר להכנת הכפתורים
+                if (ManagementActivities.telegramButtonList.isEmpty()) {
+                    sendMessage.setText("Please send a message after you pressed activity buttons");
+                    InlineKeyboardButton refreshButton = new InlineKeyboardButton("Refresh button"); // בניית כפתור
+                    refreshButton.setCallbackData("Refresh button");
+                    ManagementActivities.telegramButtonList.add(refreshButton);
+                }
 
+                showButtons(sendMessage, ManagementActivities.telegramButtonList);// מתודה קבועה שניתן להיעזר להכנת הכפתורים
             }
         }
-
-            send(sendMessage);
-
-
+        send(sendMessage);
 
     }
+
 
     private long getChatId(Update update) {
         long chatId;
@@ -117,8 +110,10 @@ public class TelegramBot extends TelegramLongPollingBot {
         } else {
             chatId = update.getMessage().getChatId();
         }
+        System.out.println(chatId);
         return chatId;
     }
+
 
 
 

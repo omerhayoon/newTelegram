@@ -63,6 +63,7 @@ public class Panel extends JPanel {
         userStatistics.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 System.out.println("User Statistics");
+                window.userStatistic();
             }
         });
 
@@ -72,6 +73,8 @@ public class Panel extends JPanel {
         activityHistory.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Activity history");
+                window.activityHistory();
+
             }
         });
         JButton graph = new JButton("graph ");
