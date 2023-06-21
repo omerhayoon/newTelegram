@@ -15,7 +15,7 @@ import java.util.concurrent.CompletableFuture;
 
 public class TelegramBot extends TelegramLongPollingBot {
     private Map<Long, Responder> responderMap;
-    private JokesAPI jokesAPI;
+    //private JokesAPI jokesAPI;
 
 
     public TelegramBot() {
