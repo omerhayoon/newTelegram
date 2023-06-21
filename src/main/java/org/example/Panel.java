@@ -13,6 +13,7 @@ import java.util.Objects;
 
 public class Panel extends JPanel {
     private Image background;
+    private Window  window;
     private static final int HEIGHT_BUTTON = 30,WIDTH_BUTTON=180,DELTA=10,X_LINE=10,Y_LINE=440,WIDTH_LINE=480,HEIGHT_LINE=20;
 
     public Panel(Window window){
@@ -21,8 +22,21 @@ public class Panel extends JPanel {
         this.setLayout(null);
         addByLine();
         buttonAndAction();
+        //managementActivities=new ManagementActivities(0,0,500,500,Panel.this);
 
     }
+//    public void returnMainPanel(){
+//        removeAll();
+//
+//    }
+//    public  void addManagementActivities(){
+//        this.setVisible(false);
+//        add(managementActivities);
+//        managementActivities.requestFocus();
+//        managementActivities.setVisible(true);
+//        this.setVisible(false);
+//
+//    }
     public void addByLine() {
         JLabel by = new JLabel("@By Avihay Navon, David Even-Haim, Omer Hayoon, Avihay Ben-Ami,Idan Zakheym AAC-CS 2023");
         by.setBounds(X_LINE, Y_LINE, WIDTH_LINE, HEIGHT_LINE);
@@ -38,10 +52,8 @@ public class Panel extends JPanel {
         managementActivities.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Management Activities");
-                removeAll();
-                add(new ManagementActivities(0,0,500,500));
-                revalidate();
-                repaint();
+                //addManagementActivities();
+                window.managementActivities();
             }
 
         });
