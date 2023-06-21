@@ -6,13 +6,21 @@
   <component name="ChangeListManager">
     <list default="true" id="30bc2d16-9211-47aa-b9fc-92e3b1147299" name="Changes" comment=".">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ApiPath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ApiPath.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/JokesAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/JokesAPI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ManagementActivities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ManagementActivities.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Panel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Panel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/TelegramBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/TelegramBot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Window.java" afterDir="false" />
     </list>
-    <list id="143e32f5-66d2-4cbe-b00e-e9adf012acde" name="Changes by אביחי" comment="" />
+    <list id="6f07f5e6-bc20-4587-a616-7d4c82797d07" name="Changes by david" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ManagementActivities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ManagementActivities.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/TelegramBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/TelegramBot.java" afterDir="false" />
+    </list>
+    <list id="143e32f5-66d2-4cbe-b00e-e9adf012acde" name="Changes by אביחי" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Panel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Panel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Window.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,6 +35,58 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/src/main/java/org/example/Main.java">
+      <ranges>
+        <range start1="8" end1="9" start2="8" end2="9" changelist="143e32f5-66d2-4cbe-b00e-e9adf012acde" />
+        <range start1="14" end1="14" start2="14" end2="15" changelist="6f07f5e6-bc20-4587-a616-7d4c82797d07" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/main/java/org/example/Panel.java">
+      <ranges>
+        <range start1="15" end1="15" start2="15" end2="16" changelist="143e32f5-66d2-4cbe-b00e-e9adf012acde" />
+        <range start1="17" end1="18" start2="18" end2="19" changelist="30bc2d16-9211-47aa-b9fc-92e3b1147299" />
+        <range start1="19" end1="19" start2="20" end2="21" changelist="30bc2d16-9211-47aa-b9fc-92e3b1147299" />
+        <range start1="22" end1="22" start2="24" end2="25" changelist="143e32f5-66d2-4cbe-b00e-e9adf012acde" />
+        <range start1="24" end1="24" start2="27" end2="39" changelist="143e32f5-66d2-4cbe-b00e-e9adf012acde" />
+        <range start1="39" end1="43" start2="54" end2="56" changelist="143e32f5-66d2-4cbe-b00e-e9adf012acde" />
+        <range start1="78" end1="79" start2="91" end2="92" changelist="30bc2d16-9211-47aa-b9fc-92e3b1147299" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/main/java/org/example/Window.java">
+      <ranges>
+        <range start1="11" end1="11" start2="11" end2="12" changelist="30bc2d16-9211-47aa-b9fc-92e3b1147299" />
+        <range start1="12" end1="12" start2="13" end2="14" changelist="143e32f5-66d2-4cbe-b00e-e9adf012acde" />
+        <range start1="15" end1="16" start2="17" end2="18" changelist="143e32f5-66d2-4cbe-b00e-e9adf012acde" />
+        <range start1="26" end1="27" start2="28" end2="29" changelist="143e32f5-66d2-4cbe-b00e-e9adf012acde" />
+        <range start1="28" end1="28" start2="30" end2="45" changelist="143e32f5-66d2-4cbe-b00e-e9adf012acde" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/main/java/org/example/TelegramBot.java">
+      <ranges>
+        <range start1="9" end1="13" start2="9" end2="10" changelist="6f07f5e6-bc20-4587-a616-7d4c82797d07" />
+        <range start1="16" end1="16" start2="13" end2="14" changelist="6f07f5e6-bc20-4587-a616-7d4c82797d07" />
+        <range start1="17" end1="17" start2="15" end2="17" changelist="6f07f5e6-bc20-4587-a616-7d4c82797d07" />
+        <range start1="22" end1="22" start2="22" end2="24" changelist="6f07f5e6-bc20-4587-a616-7d4c82797d07" />
+        <range start1="33" end1="53" start2="35" end2="35" changelist="6f07f5e6-bc20-4587-a616-7d4c82797d07" />
+        <range start1="54" end1="84" start2="36" end2="41" changelist="6f07f5e6-bc20-4587-a616-7d4c82797d07" />
+        <range start1="85" end1="96" start2="42" end2="42" changelist="6f07f5e6-bc20-4587-a616-7d4c82797d07" />
+        <range start1="98" end1="100" start2="44" end2="107" changelist="6f07f5e6-bc20-4587-a616-7d4c82797d07" />
+        <range start1="115" end1="120" start2="122" end2="123" changelist="6f07f5e6-bc20-4587-a616-7d4c82797d07" />
+        <range start1="128" end1="128" start2="131" end2="134" changelist="30bc2d16-9211-47aa-b9fc-92e3b1147299" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/main/java/org/example/ManagementActivities.java">
+      <ranges>
+        <range start1="2" end1="2" start2="2" end2="5" changelist="30bc2d16-9211-47aa-b9fc-92e3b1147299" />
+        <range start1="3" end1="4" start2="6" end2="6" changelist="30bc2d16-9211-47aa-b9fc-92e3b1147299" />
+        <range start1="6" end1="6" start2="8" end2="12" changelist="30bc2d16-9211-47aa-b9fc-92e3b1147299" />
+        <range start1="9" end1="10" start2="15" end2="37" changelist="6f07f5e6-bc20-4587-a616-7d4c82797d07" />
+        <range start1="17" end1="21" start2="44" end2="45" changelist="30bc2d16-9211-47aa-b9fc-92e3b1147299" />
+        <range start1="26" end1="29" start2="50" end2="114" changelist="6f07f5e6-bc20-4587-a616-7d4c82797d07" />
+      </ranges>
+    </file>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -85,6 +145,7 @@
       <workItem from="1686555456192" duration="4402000" />
       <workItem from="1686559894016" duration="4872000" />
       <workItem from="1686661886586" duration="993000" />
+      <workItem from="1687332570964" duration="8951000" />
     </task>
     <task id="LOCAL‎-00001" summary=".">
       <created>1686679992333</created>
@@ -148,16 +209,5 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="." />
     <option name="LAST_COMMIT_MESSAGE" value="." />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/TelegramBot.java</url>
-          <line>88</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

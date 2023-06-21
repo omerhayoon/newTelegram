@@ -15,8 +15,9 @@ public class Panel extends JPanel {
     private Image background;
     private static final int HEIGHT_BUTTON = 30,WIDTH_BUTTON=180,DELTA=10,X_LINE=10,Y_LINE=440,WIDTH_LINE=480,HEIGHT_LINE=20;
 
-    public Panel(){
+    public Panel(Window window){
         addBackgroundPicture();
+        this.window=window;
         this.setLayout(null);
         addByLine();
         buttonAndAction();
@@ -76,7 +77,7 @@ public class Panel extends JPanel {
     }
     public void addBackgroundPicture() {
         try {
-            background=ImageIO.read(new File("C:\\Users\\עומר\\IdeaProjects\\telegramAPI\\src\\main\\java\\org\\example\\telegram image.jpg"));
+            background=ImageIO.read(new File("src/main/java/org/example/telegram image.jpg"));
         } catch (IOException ex) {
             ex.printStackTrace();
         }

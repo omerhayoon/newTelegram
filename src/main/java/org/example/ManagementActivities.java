@@ -1,9 +1,15 @@
 package org.example;
 
+import org.glassfish.jersey.server.internal.scanning.PackageNamesScanner;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
+
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 
 public class ManagementActivities extends JPanel {
 
@@ -15,10 +21,7 @@ public class ManagementActivities extends JPanel {
         returnButton.setVisible(true);
         returnButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                removeAll();
-                add(new Panel());
-                revalidate();
-                repaint();
+               window.mainPanel();
             }
         });
         this.add(returnButton);
