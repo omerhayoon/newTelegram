@@ -4,6 +4,7 @@ public class Responder {
     private long chatId;
     private String phone;
     private int supportStatus;
+    public  Integer amountActivity;
     public static final int SERVICE_UNKNOWN = 0;
     public static final int SERVICE_WEATHER = 1;
     public static final int SERVICE_FIXER_IO_API = 2;
@@ -14,6 +15,11 @@ public class Responder {
     public Responder(long chatId) {
         this.chatId = chatId;
         this.supportStatus = SERVICE_UNKNOWN;
+        this.amountActivity=0;
+
+    }
+    public void updateAmountActivity(){
+        this.amountActivity++;
     }
 
     public void updateSupportStatus(char choice) {
@@ -24,5 +30,9 @@ public class Responder {
             case ('N') -> this.supportStatus = SERVICE_NEWS_API;
             case ('C') -> this.supportStatus = SERVICE_COVID_19_DATA_API;
         }
+    }
+
+    public  Integer getAmountActivity() {
+        return this.amountActivity;
     }
 }

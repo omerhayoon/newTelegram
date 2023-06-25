@@ -23,8 +23,10 @@ import java.util.concurrent.CompletableFuture;
 
 public class TelegramBot extends TelegramLongPollingBot {
 
-    private Map<Long, Responder> responderMap;
+    public static  Map<Long, Responder> responderMap; //צריך לבדוק אם מבחינת הנדסה תוכנה זה נכון
     private List<InlineKeyboardButton> buttonList;
+
+
 
     //private JokesAPI jokesAPI;
 
@@ -32,6 +34,7 @@ public class TelegramBot extends TelegramLongPollingBot {
     public TelegramBot() {
         this.responderMap = new HashMap<>();
         buttonList = new ArrayList<>();
+
 
     }
 
@@ -60,29 +63,35 @@ public class TelegramBot extends TelegramLongPollingBot {
         if (update.hasCallbackQuery()) {// אם בוצע לחיצה בכפתור
             String callBack = update.getCallbackQuery().getData();
             switch (callBack) {
-                case ("weatherAPI") -> {
-                    //responder.updateSupportStatus('W');
-                    sendMessage.setText("Sure, here is a Number fact -\n" + NumbersFactAPI.NumbersFactAPI());
+                case ("NumberFact") -> {
+                    UserStatistics.countNumberAPI++;
+                    this.responderMap.get(chatId).updateAmountActivity();
+                    sendMessage.setText("Sure, here is a number fact -\n" + NumbersFactAPI.NumbersFactAPI());
                     showButtons(sendMessage, ManagementActivities.telegramButtonList);
                 }
                 case ("catsAPI") -> {
+                    UserStatistics.countCatsAPI++;
+                    this.responderMap.get(chatId).updateAmountActivity();
                     sendMessage.setText("Sure, here is a Cat fact -\n" + CatFactAPI.catFactAPI());
                     showButtons(sendMessage, ManagementActivities.telegramButtonList);
                 }
                 case ("jokesAPI") -> {
-                    // responder.updateSupportStatus('J');
+                    UserStatistics.countJokesAPI++;
+                    this.responderMap.get(chatId).updateAmountActivity();
                     sendMessage.setText("Sure, here is a Joke fact -\n" + JokesAPI.jokeAPI());
                     showButtons(sendMessage, ManagementActivities.telegramButtonList);
                 }
 
                 case ("ipAPI") -> {
-                    //responder.updateSupportStatus('I');
+                    UserStatistics.countIpAPI++;
+                    this.responderMap.get(chatId).updateAmountActivity();
                     sendMessage.setText("Sure, here is your ip -\n" + ipAPI.ipAPI());
                     showButtons(sendMessage, ManagementActivities.telegramButtonList);
                 }
-                case ("factAPI") -> {
-                    //responder.updateSupportStatus('C');
-                    sendMessage.setText(" Great! Covid-19 Data API: ");
+                case ("Trivia") -> {
+                    UserStatistics.countTriviaAPI++;
+                    this.responderMap.get(chatId).updateAmountActivity();
+                    sendMessage.setText("Great! here is a random trivia question: \n"+TriviaAPI.TriviaAPI());
                     showButtons(sendMessage, ManagementActivities.telegramButtonList);
                 }
                 case ("Refresh") -> {
@@ -99,6 +108,7 @@ public class TelegramBot extends TelegramLongPollingBot {
             if (responder == null) { // במידה ולא דיברנו תישמור את הכתובת והתגובה
                 responder = new Responder(chatId);
                 this.responderMap.put(chatId, responder);
+                UserStatistics.amountUsers = (responderMap.size() + 1);
                 sendMessage.setText("Hey, Welcome to my facts and jokes bot!" + "\n" + // כותב את ההודעה
                         "Please choose any subject to get a fact/jokes about!");
                 showButtons(sendMessage, ManagementActivities.telegramButtonList);// מתודה קבועה שניתן להיעזר להכנת הכפתורים
