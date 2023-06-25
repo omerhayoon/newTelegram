@@ -29,10 +29,10 @@ public class ManagementActivities extends JPanel {
         JToggleButton ipAPIButton = createButton("ipAPI");
         JToggleButton catsAPIButton = createButton("catsAPI");
         JToggleButton jokesAPIButton = createButton("jokesAPI");
-        JToggleButton weatherAPIButton = createButton("weatherAPI");
-        JToggleButton factAPIButton = createButton("factAPI");
-        addButtonsToPanel(ipAPIButton, catsAPIButton, jokesAPIButton, weatherAPIButton, factAPIButton);
-        buttonsBounds(ipAPIButton, catsAPIButton, jokesAPIButton, weatherAPIButton, factAPIButton);
+        JToggleButton numberAPIButton = createButton("NumberFact");
+        JToggleButton triviaAPIButton = createButton("Trivia");
+        addButtonsToPanel(ipAPIButton, catsAPIButton, jokesAPIButton, numberAPIButton, triviaAPIButton);
+        buttonsBounds(ipAPIButton, catsAPIButton, jokesAPIButton, numberAPIButton, triviaAPIButton);
         this.setBounds(x, y, width, height);
         this.setLayout(null);
         JButton returnButton = new JButton("Return");
@@ -44,12 +44,12 @@ public class ManagementActivities extends JPanel {
 
 
     private void buttonsBounds(JToggleButton ipAPIButton, JToggleButton catsAPIButton,
-                               JToggleButton jokesAPIButton, JToggleButton weatherAPIButton, JToggleButton factAPIButton) {
+                               JToggleButton jokesAPIButton, JToggleButton NumberFactButton, JToggleButton triviaButton) {
         ipAPIButton.setBounds(200, 10, 100, 25);
         catsAPIButton.setBounds(200, 50, 100, 25);
         jokesAPIButton.setBounds(200, 90, 100, 25);
-        weatherAPIButton.setBounds(200, 130, 100, 25);
-        factAPIButton.setBounds(200, 170, 100, 25);
+        NumberFactButton.setBounds(200, 130, 100, 25);
+        triviaButton.setBounds(200, 170, 100, 25);
     }
 
     private JToggleButton createButton(String name) {

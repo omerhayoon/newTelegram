@@ -2,12 +2,22 @@ package org.example;
 
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
+import org.telegram.telegrambots.meta.api.objects.InputFile;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import javax.swing.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
+import java.net.URL;
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
 
@@ -80,8 +90,8 @@ public class TelegramBot extends TelegramLongPollingBot {
                     //System.out.println("Pressed refresh");
                     sendMessage.setText("Please press a button on Management Activities.");
                     showButtons(sendMessage, ManagementActivities.telegramButtonList);
-
                 }
+
             }
 
         } else {
@@ -97,7 +107,6 @@ public class TelegramBot extends TelegramLongPollingBot {
         send(sendMessage);
 
     }
-
 
 
     private long getChatId(Update update) {
@@ -120,5 +129,42 @@ public class TelegramBot extends TelegramLongPollingBot {
         }
     }
 
+    //////////////////////////
+    private String getRandomDogPictureUrl() {
+        String apiUrl = "https://dog.ceo/api/breeds/image/random";
+        String randomDogPictureUrl = "";
 
+        try {
+            URL url = new URL(apiUrl);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+
+            int responseCode = connection.getResponseCode();
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+                BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                String inputLine;
+                StringBuilder response = new StringBuilder();
+
+                while ((inputLine = in.readLine()) != null) {
+                    response.append(inputLine);
+                }
+                in.close();
+
+                // Parse the JSON response to extract the picture URL
+                String responseData = response.toString();
+                randomDogPictureUrl = responseData.substring(responseData.indexOf("\"message\":\"") + 12, responseData.indexOf("\",\"status\":"));
+
+            } else {
+                System.out.println("Error: " + responseCode);
+            }
+
+            connection.disconnect();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return randomDogPictureUrl;
+
+    }
 }

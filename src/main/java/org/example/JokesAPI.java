@@ -3,7 +3,7 @@ package org.example;
 
 public class JokesAPI {
     private static final String REQUEST_ADRESS = "https://v2.jokeapi.dev/joke/any";
-    private static final String JSON_OBJECT_STRING = "setup,delivery";
+    private static final String JSON_OBJECT_STRING = "setup";
 
 
     public static String jokeAPI() {
