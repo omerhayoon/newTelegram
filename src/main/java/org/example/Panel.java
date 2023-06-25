@@ -22,21 +22,8 @@ public class Panel extends JPanel {
         this.setLayout(null);
         addByLine();
         buttonAndAction();
-        //managementActivities=new ManagementActivities(0,0,500,500,Panel.this);
-
     }
-//    public void returnMainPanel(){
-//        removeAll();
-//
-//    }
-//    public  void addManagementActivities(){
-//        this.setVisible(false);
-//        add(managementActivities);
-//        managementActivities.requestFocus();
-//        managementActivities.setVisible(true);
-//        this.setVisible(false);
-//
-//    }
+
     public void addByLine() {
         JLabel by = new JLabel("@By Avihay Navon, David Even-Haim, Omer Hayoon, Avihay Ben-Ami,Idan Zakheym AAC-CS 2023");
         by.setBounds(X_LINE, Y_LINE, WIDTH_LINE, HEIGHT_LINE);
@@ -52,7 +39,6 @@ public class Panel extends JPanel {
         managementActivities.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Management Activities");
-                //addManagementActivities();
                 window.managementActivities();
             }
 

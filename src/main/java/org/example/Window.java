@@ -1,10 +1,8 @@
 package org.example;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.io.File;
-import java.io.IOException;
+
 
 public class Window extends JFrame {
     private static final int WIDTH = 500;
@@ -30,13 +28,11 @@ public class Window extends JFrame {
         this.panel.setBounds(0, 0, WIDTH, HEIGHT);
         panel.requestFocus();
         this.managementActivities=new ManagementActivities(0,0,500,500,this);
-        this.userStatistics=new UserStatistics(this);
         this.activityHistory=new ActivityHistory(this);
         this.graph=new Graph(this);
     }
     public void mainPanel(){
         managementActivities.setVisible(false);
-        userStatistics.setVisible(false);
         activityHistory.setVisible(false);
         graph.setVisible(false);
         panel.setVisible(true);
@@ -51,11 +47,7 @@ public class Window extends JFrame {
 
     }
     public void userStatistic(){
-        panel.setVisible(false);
-        this.add(userStatistics);
-        this.userStatistics.setBounds(0, 0, WIDTH, HEIGHT);
-        userStatistics.requestFocus();
-        userStatistics.setVisible(true);
+        this.userStatistics = new UserStatistics();
     }
     public void activityHistory(){
         panel.setVisible(false);

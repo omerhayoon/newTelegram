@@ -46,7 +46,7 @@ public class Graph extends JPanel {
                 "  data: {\n" +
                 "    labels: ['Cat', 'Joke', 'Trivia', 'Number', 'ip'],\n" +
                 "    datasets: [{\n" +
-                "      label: 'Total Request: " + UserStatistics.allRequests() + " Current time is " + Utils.getCurrentTime() + "',\n" +
+                "      label: 'Total Request: " + UserStatistics.totalRequest() + " Current time is " + Utils.getCurrentTime() + "',\n" +
                 "      data: [" + UserStatistics.countCatsAPI + ", " + UserStatistics.countJokesAPI + ", " + UserStatistics.countTriviaAPI + ", " + UserStatistics.countNumberAPI + ", " + UserStatistics.countIpAPI + "]\n" +
                 "    }]\n" +
                 "  }\n" +

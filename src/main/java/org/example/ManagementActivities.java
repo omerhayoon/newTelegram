@@ -62,8 +62,6 @@ public class ManagementActivities extends JPanel {
                     telegramButtonList.add(numbersButton);
 
                     currentSelectionCount++;
-                    System.out.println(button.getText() + " pressed");
-                    telegramButtonList.forEach(System.out::println);
 
                 } else {
                     button.setSelected(false);
@@ -78,8 +76,6 @@ public class ManagementActivities extends JPanel {
                         iterator.remove();
                     }
                 }
-                System.out.println(button.getText() + " unpressed");
-                telegramButtonList.forEach(System.out::println);
             }
         });
         buttons.add(button);

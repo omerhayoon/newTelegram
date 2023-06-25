@@ -2,39 +2,28 @@ package org.example;
 
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
-import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
-import org.telegram.telegrambots.meta.api.objects.InputFile;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
-
-import javax.swing.*;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
-import java.net.URL;
 import java.util.*;
-import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class TelegramBot extends TelegramLongPollingBot {
 
-    public static  Map<Long, Responder> responderMap; //צריך לבדוק אם מבחינת הנדסה תוכנה זה נכון
-    private List<InlineKeyboardButton> buttonList;
+    public static Map<Long, Responder> responderMap = Collections.synchronizedMap(new HashMap<>());
 
+    private List<InlineKeyboardButton> buttonList = Collections.synchronizedList(new ArrayList<>());
 
+    public static Queue<String> activityHistory = new ConcurrentLinkedQueue<>();
+    private final int MAX_SIZE = 10;
 
-    //private JokesAPI jokesAPI;
 
 
     public TelegramBot() {
         this.responderMap = new HashMap<>();
         buttonList = new ArrayList<>();
-
+        activityHistory = new LinkedList<>();
 
     }
 
@@ -90,12 +79,11 @@ public class TelegramBot extends TelegramLongPollingBot {
                 case ("Trivia") -> {
                     UserStatistics.countTriviaAPI++;
                     this.responderMap.get(chatId).updateAmountActivity();
-                    sendMessage.setText("Great! here is a random trivia question: \n"+TriviaAPI.TriviaAPI());
+                    sendMessage.setText("Great! here is a random trivia question: \n" + TriviaAPI.TriviaAPI());
+                    updateHistory(chatId,this.responderMap.get(chatId).getName(),"Trivia");
                     showButtons(sendMessage, ManagementActivities.telegramButtonList);
                 }
                 case ("Refresh") -> {
-                    //System.out.println(ManagementActivities.telegramButtonList.size() + " size");
-                    //System.out.println("Pressed refresh");
                     sendMessage.setText("Please press a button on Management Activities.");
                     showButtons(sendMessage, ManagementActivities.telegramButtonList);
                 }
@@ -108,13 +96,20 @@ public class TelegramBot extends TelegramLongPollingBot {
                 responder = new Responder(chatId);
                 this.responderMap.put(chatId, responder);
                 UserStatistics.amountUsers = (responderMap.size() + 1);
-                sendMessage.setText("Hey, Welcome to my facts and jokes bot!" + "\n" + // כותב את ההודעה
-                        "Please choose any subject to get a fact/jokes about!");
+                sendMessage.setText("Hey, Welcome to my bot!" + "\n" + // כותב את ההודעה
+                        "Please choose any subject!");
                 showButtons(sendMessage, ManagementActivities.telegramButtonList);// מתודה קבועה שניתן להיעזר להכנת הכפתורים
             }
         }
         send(sendMessage);
 
+    }
+    private void updateHistory(long chatId, String name,String callBack){
+        String updated = "Name: "+name+", ID: "+ chatId+", Interaction: "+callBack+",Time: "+Utils.getCurrentTime();
+        if(activityHistory.size()>=MAX_SIZE){
+            activityHistory.poll();
+        }
+        activityHistory.add(updated);
     }
 
 
@@ -129,7 +124,6 @@ public class TelegramBot extends TelegramLongPollingBot {
         return chatId;
     }
 
-
     public void send(SendMessage sendMessage) {
         try {
             execute(sendMessage);
@@ -138,42 +132,4 @@ public class TelegramBot extends TelegramLongPollingBot {
         }
     }
 
-    //////////////////////////
-    private String getRandomDogPictureUrl() {
-        String apiUrl = "https://dog.ceo/api/breeds/image/random";
-        String randomDogPictureUrl = "";
-
-        try {
-            URL url = new URL(apiUrl);
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setRequestMethod("GET");
-
-            int responseCode = connection.getResponseCode();
-            if (responseCode == HttpURLConnection.HTTP_OK) {
-                BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-                String inputLine;
-                StringBuilder response = new StringBuilder();
-
-                while ((inputLine = in.readLine()) != null) {
-                    response.append(inputLine);
-                }
-                in.close();
-
-                // Parse the JSON response to extract the picture URL
-                String responseData = response.toString();
-                randomDogPictureUrl = responseData.substring(responseData.indexOf("\"message\":\"") + 12, responseData.indexOf("\",\"status\":"));
-
-            } else {
-                System.out.println("Error: " + responseCode);
-            }
-
-            connection.disconnect();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return randomDogPictureUrl;
-
-    }
 }
