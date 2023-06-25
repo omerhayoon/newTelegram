@@ -59,6 +59,7 @@ public class Window extends JFrame {
         this.activityHistory.setBounds(0,0,WIDTH,HEIGHT);
         activityHistory.requestFocus();
         activityHistory.setVisible(true);
+
     }
 
 
