@@ -1,15 +1,10 @@
 package org.example;
 
-import org.glassfish.grizzly.http.server.Constants;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
-import java.util.Objects;
 
 public class Panel extends JPanel {
     private  Image background;
@@ -36,12 +31,9 @@ public class Panel extends JPanel {
         JButton managementActivities = new JButton("Management Activities ");
         managementActivities.setBounds(HEIGHT_BUTTON,HEIGHT_BUTTON,WIDTH_BUTTON,HEIGHT_BUTTON);
         managementActivities.setVisible(true);
-        managementActivities.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("Management Activities");
-                window.managementActivities();
-            }
-
+        managementActivities.addActionListener(e -> {
+            System.out.println("Management Activities");
+            window.managementActivities();
         });
         JButton userStatistics = new JButton("User Statistics ");
         userStatistics.setBounds(HEIGHT_BUTTON,managementActivities.getY()+HEIGHT_BUTTON+DELTA,WIDTH_BUTTON,HEIGHT_BUTTON);
@@ -49,28 +41,21 @@ public class Panel extends JPanel {
         userStatistics.addActionListener(e -> {
             System.out.println("User Statistics");
             window.userStatistic();
-
-
         });
 
         JButton activityHistory = new JButton("Activity history ");
         activityHistory.setBounds(HEIGHT_BUTTON,userStatistics.getY()+HEIGHT_BUTTON+DELTA,WIDTH_BUTTON,HEIGHT_BUTTON);
         activityHistory.setVisible(true);
-        activityHistory.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("Activity history");
-                window.activityHistory();
-
-            }
+        activityHistory.addActionListener(e -> {
+            System.out.println("Activity history");
+            window.activityHistory();
         });
-        JButton graph = new JButton("graph ");
+        JButton graph = new JButton("Graph ");
         graph.setBounds(HEIGHT_BUTTON,activityHistory.getY()+HEIGHT_BUTTON+DELTA,WIDTH_BUTTON,HEIGHT_BUTTON);
         graph.setVisible(true);
-        graph.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                System.out.println(" graph");
-                window.graph();
-            }
+        graph.addActionListener(e -> {
+            System.out.println(" graph");
+            window.graph();
         });
         this.add(managementActivities);
         this.add(userStatistics);

@@ -35,7 +35,7 @@ public class Graph extends JPanel {
                     throw new RuntimeException(e);
                 }
                 repaint();
-                Utils.sleep();
+                Utils.sleep(300);
             }
         }).start();
 

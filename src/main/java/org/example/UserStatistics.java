@@ -1,10 +1,12 @@
 package org.example;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
-import java.util.Comparator;
+import java.awt.*;
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 public class UserStatistics  {
     private Window window;
@@ -30,15 +32,16 @@ public class UserStatistics  {
         allActivity.put("Jokes API", countJokesAPI);
         allActivity.put("Ip API", countIpAPI);
         allActivity.put("Fact API", countTriviaAPI);
-        System.out.println(allActivity);
-        String result = allActivity.entrySet()
-                .stream()
-                .max(Map.Entry.comparingByValue())
-                .map(Map.Entry::getKey)
-                .orElse("No activity found");
-
-        System.out.println(result);
-        return result;
+        boolean hasActivity = allActivity.values().stream().anyMatch(count -> count > 0);
+        if (allActivity.values().stream().anyMatch(count -> count > 0)) {
+            return "No activity found";
+        } else {
+            return allActivity.entrySet()
+                    .stream()
+                    .max(Map.Entry.comparingByValue())
+                    .map(Map.Entry::getKey)
+                    .orElse("No activity found");
+        }
 
     }
 
@@ -48,21 +51,24 @@ public class UserStatistics  {
     }
 
     public String mostActiveUser() {
-        Map<Long, Integer> result = TelegramBot.responderMap.entrySet().stream()
-                .sorted(Comparator.comparingInt(entry -> entry.getValue().getAmountActivity()))
-                .collect(Collectors.toMap(Map.Entry::getKey, entry -> entry.getValue().getAmountActivity(), (e1, e2) -> e1));
+        Responder maxResponder = null;
+        int maxActivity = Integer.MIN_VALUE;
+        for (Long chatId : TelegramBot.responderMap.keySet()) {
+            Responder responder = TelegramBot.responderMap.get(chatId);
+            int activity = responder.getAmountActivity();
 
-        Long userId = result.keySet().stream().findFirst().orElse(null);
-        Integer activity = result.values().stream().findFirst().orElse(null);
-        String userName = null;
-        if (userId != null) {
-            Responder responder = TelegramBot.responderMap.get(userId);
-            if (responder != null) {
-                userName = responder.getName();
+            if (activity > maxActivity) {
+                maxResponder = responder;
+                maxActivity = activity;
             }
         }
-
-        return "The id with the most activity - " + userId + ", name "+ userName +" With " + activity + " activities";
+        if (maxResponder != null) {
+            long chatId = maxResponder.getChatId();
+            String userName = maxResponder.getName();
+            return "Most Common chat ID: " + chatId + ", name: " + userName + " With " + maxActivity + " activities.";
+        } else {
+            return "No responders found.";
+        }
     }
 
 

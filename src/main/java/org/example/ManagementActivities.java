@@ -69,15 +69,12 @@ public class ManagementActivities extends JPanel {
                     InlineKeyboardButton numbersButton = new InlineKeyboardButton(button.getText());
                     numbersButton.setCallbackData(button.getText());
                     telegramButtonList.add(numbersButton);
-
                     currentSelectionCount++;
-
                 } else {
                     button.setSelected(false);
                 }
             } else {
                 currentSelectionCount--;
-
                 Iterator<InlineKeyboardButton> iterator = telegramButtonList.iterator();
                 while (iterator.hasNext()) {
                     InlineKeyboardButton telegramButton = iterator.next();

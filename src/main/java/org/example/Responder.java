@@ -10,7 +10,6 @@ public class Responder {
         this.chatId = chatId;
         this.name=name;
         this.amountActivity=0;
-
     }
     public void updateAmountActivity(){
         this.amountActivity++;
@@ -21,5 +20,8 @@ public class Responder {
     }
     public String getName(){
         return this.name;
+    }
+    public long getChatId() {
+        return this.chatId;
     }
 }

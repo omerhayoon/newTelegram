@@ -10,7 +10,7 @@ public class Utils {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
         return currentTime.format(formatter);
     }
-    public static void sleep(){
+    public static void sleep(int number){
         try {
             Thread.sleep(number);
         } catch (InterruptedException e) {

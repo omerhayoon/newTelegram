@@ -34,12 +34,7 @@ public class ActivityHistory extends JPanel {
             while (true) {
                 Queue<String> activityHistory = TelegramBot.activityHistory;
                 updateTextArea(formatActivityHistory(activityHistory));
-
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    break;
-                }
+                Utils.sleep(500);
             }
         });
         thread.start();
@@ -47,8 +42,11 @@ public class ActivityHistory extends JPanel {
 
     private void updateTextArea(String[] formattedHistory) {
         StringBuilder sb = new StringBuilder();
+        sb.append("Activity History \n");
         for (String activity : formattedHistory) {
-            sb.append(activity).append("\n");
+            if (activity != null) {
+                sb.append(activity).append("\n");
+            }
         }
         SwingUtilities.invokeLater(() -> textArea.setText(sb.toString()));
     }
@@ -67,6 +65,6 @@ public class ActivityHistory extends JPanel {
     }
 
     public Dimension getPreferredSize() {
-        return new Dimension(500, 500); // Set the desired size of the panel
+        return new Dimension(500, 500);
     }
 }
