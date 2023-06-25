@@ -83,6 +83,7 @@ public class Panel extends JPanel {
         graph.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 System.out.println(" graph");
+                window.graph();
             }
         });
         this.add(managementActivities);

@@ -14,6 +14,7 @@ public class Window extends JFrame {
     private ManagementActivities  managementActivities;
     private UserStatistics userStatistics;
     private ActivityHistory activityHistory;
+    private Graph graph;
 
 
     public Window(){
@@ -31,11 +32,13 @@ public class Window extends JFrame {
         this.managementActivities=new ManagementActivities(0,0,500,500,this);
         this.userStatistics=new UserStatistics(this);
         this.activityHistory=new ActivityHistory(this);
+        this.graph=new Graph(this);
     }
     public void mainPanel(){
         managementActivities.setVisible(false);
         userStatistics.setVisible(false);
         activityHistory.setVisible(false);
+        graph.setVisible(false);
         panel.setVisible(true);
     }
     public void managementActivities(){
@@ -60,6 +63,13 @@ public class Window extends JFrame {
         this.activityHistory.setBounds(0,0,WIDTH,HEIGHT);
         activityHistory.requestFocus();
         activityHistory.setVisible(true);
+    }
+    public void graph(){
+        panel.setVisible(false);
+        this.add(graph);
+        this.graph.setBounds(0,0,WIDTH,HEIGHT);
+        graph.requestFocus();
+        graph.setVisible(true);
 
     }
 
