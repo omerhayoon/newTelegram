@@ -13,8 +13,7 @@ import java.util.List;
 
 public class ManagementActivities extends JPanel {
 
-    //private int maxSelectionCount = 3;
-    private int maxSelectionCount = 3; //trying to do smthing
+    private int maxSelectionCount = 3;
     private int currentSelectionCount = 0;
     private Window window;
     private List<JToggleButton> buttons;
