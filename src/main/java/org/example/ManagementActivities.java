@@ -1,11 +1,8 @@
 package org.example;
 
-import org.glassfish.jersey.server.internal.scanning.PackageNamesScanner;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -13,7 +10,7 @@ import java.util.List;
 
 public class ManagementActivities extends JPanel {
 
-    private int maxSelectionCount = 3;
+    private final int MAX_SELECTION_COUNT = 3;
     private int currentSelectionCount = 0;
     private Window window;
     private List<JToggleButton> buttons;
@@ -59,7 +56,7 @@ public class ManagementActivities extends JPanel {
         JToggleButton button = new JToggleButton(name);
         button.addActionListener(e -> {
             if (button.isSelected()) {
-                if (currentSelectionCount < maxSelectionCount) {
+                if (currentSelectionCount < MAX_SELECTION_COUNT) {
                     // Button pressed action
                     InlineKeyboardButton numbersButton = new InlineKeyboardButton(button.getText()); // בניית כפתור
                     numbersButton.setCallbackData(button.getText());
