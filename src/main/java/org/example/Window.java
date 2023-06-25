@@ -27,7 +27,7 @@ public class Window extends JFrame {
         this.add(panel);
         this.panel.setBounds(0, 0, WIDTH, HEIGHT);
         panel.requestFocus();
-        this.managementActivities=new ManagementActivities(0,0,500,500,this);
+        this.managementActivities=new ManagementActivities(0,0,WIDTH,HEIGHT,this);
         this.activityHistory=new ActivityHistory(this);
         this.graph=new Graph(this);
     }
