@@ -75,10 +75,12 @@ public class TelegramBot extends TelegramLongPollingBot {
                     sendMessage.setText(" Great! Covid-19 Data API: ");
                     showButtons(sendMessage, ManagementActivities.telegramButtonList);
                 }
-                case ("Refresh button") -> {
+                case ("Refresh") -> {
+                    //System.out.println(ManagementActivities.telegramButtonList.size() + " size");
+                    //System.out.println("Pressed refresh");
+                    sendMessage.setText("Please press a button on Management Activities.");
                     showButtons(sendMessage, ManagementActivities.telegramButtonList);
-                    System.out.println(ManagementActivities.telegramButtonList.size() + " size");
-                    System.out.println("Pressed refresh");
+
                 }
             }
 
@@ -89,19 +91,13 @@ public class TelegramBot extends TelegramLongPollingBot {
                 this.responderMap.put(chatId, responder);
                 sendMessage.setText("Hey, Welcome to my facts and jokes bot!" + "\n" + // כותב את ההודעה
                         "Please choose any subject to get a fact/jokes about!");
-                if (ManagementActivities.telegramButtonList.isEmpty()) {
-                    sendMessage.setText("Please send a message after you pressed activity buttons");
-                    InlineKeyboardButton refreshButton = new InlineKeyboardButton("Refresh button"); // בניית כפתור
-                    refreshButton.setCallbackData("Refresh button");
-                    ManagementActivities.telegramButtonList.add(refreshButton);
-                }
-
                 showButtons(sendMessage, ManagementActivities.telegramButtonList);// מתודה קבועה שניתן להיעזר להכנת הכפתורים
             }
         }
         send(sendMessage);
 
     }
+
 
 
     private long getChatId(Update update) {

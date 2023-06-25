@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="30bc2d16-9211-47aa-b9fc-92e3b1147299" name="Changes" comment="new" />
+    <list default="true" id="30bc2d16-9211-47aa-b9fc-92e3b1147299" name="Changes" comment="new">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ManagementActivities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ManagementActivities.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/TelegramBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/TelegramBot.java" afterDir="false" />
+    </list>
     <list id="143e32f5-66d2-4cbe-b00e-e9adf012acde" name="Changes by אביחי" comment="Changes by אביחיf" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

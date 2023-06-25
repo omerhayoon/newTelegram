@@ -13,7 +13,8 @@ import java.util.List;
 
 public class ManagementActivities extends JPanel {
 
-    private int maxSelectionCount = 3;
+    //private int maxSelectionCount = 3;
+    private int maxSelectionCount = 3; //trying to do smthing
     private int currentSelectionCount = 0;
     private Window window;
     private List<JToggleButton> buttons;
@@ -26,7 +27,9 @@ public class ManagementActivities extends JPanel {
         this.window=window;
 
         this.buttons = new ArrayList<>();
-
+        InlineKeyboardButton refreshButton = new InlineKeyboardButton("Refresh"); // בניית כפתור
+        refreshButton.setCallbackData("Refresh");
+        telegramButtonList.add(refreshButton);
         JToggleButton ipAPIButton = createButton("ipAPI");
         JToggleButton catsAPIButton = createButton("catsAPI");
         JToggleButton jokesAPIButton = createButton("jokesAPI");
