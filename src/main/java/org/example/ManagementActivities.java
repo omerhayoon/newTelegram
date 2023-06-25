@@ -57,23 +57,19 @@ public class ManagementActivities extends JPanel {
         button.addActionListener(e -> {
             if (button.isSelected()) {
                 if (currentSelectionCount < MAX_SELECTION_COUNT) {
-                    // Button pressed action
-                    InlineKeyboardButton numbersButton = new InlineKeyboardButton(button.getText()); // בניית כפתור
+                    InlineKeyboardButton numbersButton = new InlineKeyboardButton(button.getText());
                     numbersButton.setCallbackData(button.getText());
                     telegramButtonList.add(numbersButton);
 
                     currentSelectionCount++;
-                    // Perform action when button is pressed
                     System.out.println(button.getText() + " pressed");
                     telegramButtonList.forEach(System.out::println);
 
                 } else {
-                    button.setSelected(false); // Deselect the button if maximum selection count is reached
+                    button.setSelected(false);
                 }
             } else {
-                // Button unpressed action
                 currentSelectionCount--;
-                // Perform action when button is unpressed
 
                 Iterator<InlineKeyboardButton> iterator = telegramButtonList.iterator();
                 while (iterator.hasNext()) {
