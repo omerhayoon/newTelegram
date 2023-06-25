@@ -60,11 +60,11 @@ public class Panel extends JPanel {
         JButton userStatistics = new JButton("User Statistics ");
         userStatistics.setBounds(HEIGHT_BUTTON,managementActivities.getY()+HEIGHT_BUTTON+DELTA,WIDTH_BUTTON,HEIGHT_BUTTON);
         userStatistics.setVisible(true);
-        userStatistics.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("User Statistics");
-                window.userStatistic();
-            }
+        userStatistics.addActionListener(e -> {
+            System.out.println("User Statistics");
+            window.userStatistic();
+
+
         });
 
         JButton activityHistory = new JButton("Activity history ");

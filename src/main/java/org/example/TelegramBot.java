@@ -55,7 +55,6 @@ public class TelegramBot extends TelegramLongPollingBot {
     }
 
     public void onUpdateReceived(Update update) {
-//        System.out.println(update.getMessage().getFrom().getFirstName());
         long chatId = getChatId(update);
         SendMessage sendMessage = new SendMessage();// פותח משתנה של הודעה
         Responder responder = this.responderMap.get(chatId);
