@@ -45,6 +45,7 @@ public class Window extends JFrame {
         managementActivities.requestFocus();
         managementActivities.setVisible(true);
 
+
     }
     public void userStatistic(){
         panel.setVisible(false);
