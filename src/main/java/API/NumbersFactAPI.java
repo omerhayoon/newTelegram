@@ -1,8 +1,6 @@
-package org.example;
+package API;
 
-import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.Unirest;
-import com.mashape.unirest.request.GetRequest;
+import API.ApiPath;
 
 public class NumbersFactAPI {
     private static final String REQUEST_ADRESS = "http://numbersapi.com/random";

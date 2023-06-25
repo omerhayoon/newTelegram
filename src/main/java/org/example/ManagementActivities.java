@@ -2,7 +2,12 @@ package org.example;
 
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -13,15 +18,19 @@ public class ManagementActivities extends JPanel {
     private final int MAX_SELECTION_COUNT = 3;
     private int currentSelectionCount = 0;
     private Window window;
+    private final int BUTTON_HEIGHT = 25;
+    private final int BUTTON_WIDTH = 150;
+    private final int BUTTON_X = 50;
+    private final int BUTTON_Y = 40;
+    BufferedImage imageIcon;
     private List<JToggleButton> buttons;
     private TelegramBot telegramBot = new TelegramBot();
     public static List<InlineKeyboardButton> telegramButtonList = new ArrayList<>();
 
 
-
-    public ManagementActivities(int x, int y, int width, int height,Window window) {
-        this.window=window;
-
+    public ManagementActivities(int x, int y, int width, int height, Window window) {
+        this.window = window;
+        addBackgroundPicture();
         this.buttons = new ArrayList<>();
         InlineKeyboardButton refreshButton = new InlineKeyboardButton("Refresh"); // בניית כפתור
         refreshButton.setCallbackData("Refresh");
@@ -36,7 +45,7 @@ public class ManagementActivities extends JPanel {
         this.setBounds(x, y, width, height);
         this.setLayout(null);
         JButton returnButton = new JButton("Return");
-        returnButton.setBounds(50, 400, 100, 40);
+        returnButton.setBounds(BUTTON_X, 400, 100, 40);
         returnButton.setVisible(true);
         returnButton.addActionListener(e -> window.mainPanel());
         this.add(returnButton);
@@ -45,11 +54,11 @@ public class ManagementActivities extends JPanel {
 
     private void buttonsBounds(JToggleButton ipAPIButton, JToggleButton catsAPIButton,
                                JToggleButton jokesAPIButton, JToggleButton NumberFactButton, JToggleButton triviaButton) {
-        ipAPIButton.setBounds(200, 10, 100, 25);
-        catsAPIButton.setBounds(200, 50, 100, 25);
-        jokesAPIButton.setBounds(200, 90, 100, 25);
-        NumberFactButton.setBounds(200, 130, 100, 25);
-        triviaButton.setBounds(200, 170, 100, 25);
+        ipAPIButton.setBounds(BUTTON_X, BUTTON_Y, BUTTON_WIDTH, BUTTON_HEIGHT);
+        catsAPIButton.setBounds(BUTTON_X, ipAPIButton.getY()+BUTTON_Y, BUTTON_WIDTH, BUTTON_HEIGHT);
+        jokesAPIButton.setBounds(BUTTON_X, catsAPIButton.getY()+BUTTON_Y, BUTTON_WIDTH, BUTTON_HEIGHT);
+        NumberFactButton.setBounds(BUTTON_X, jokesAPIButton.getY()+BUTTON_Y, BUTTON_WIDTH, BUTTON_HEIGHT);
+        triviaButton.setBounds(BUTTON_X, NumberFactButton.getY()+BUTTON_Y, BUTTON_WIDTH, BUTTON_HEIGHT);
     }
 
     private JToggleButton createButton(String name) {
@@ -86,6 +95,19 @@ public class ManagementActivities extends JPanel {
         for (JToggleButton button : buttons) {
             add(button);
         }
+    }
+
+    public void addBackgroundPicture() {
+        try {
+            imageIcon = ImageIO.read(new File("src/main/java/Utility/telegram image.jpg"));
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public void paintComponent(Graphics g) {
+        super.paintComponents(g);
+        g.drawImage(imageIcon, 0, 0, getWidth(), getHeight(), this);
     }
 
 

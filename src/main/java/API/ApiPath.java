@@ -1,4 +1,4 @@
-package org.example;
+package API;
 
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;

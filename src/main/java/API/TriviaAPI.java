@@ -1,4 +1,6 @@
-package org.example;
+package API;
+
+import API.ApiPath;
 
 public class TriviaAPI {
     private static final String REQUEST_ADRESS = "https://opentdb.com/api.php?amount=1";

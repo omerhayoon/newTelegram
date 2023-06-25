@@ -1,4 +1,6 @@
-package org.example;
+package API;
+
+import API.ApiPath;
 
 public class CatFactAPI {
     private static final String REQUEST_ADRESS = "https://catfact.ninja/fact?max_length=140";

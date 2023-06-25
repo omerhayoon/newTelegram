@@ -1,5 +1,7 @@
-package org.example;
+package API;
 
+
+import API.ApiPath;
 
 public class JokesAPI {
     private static final String REQUEST_ADRESS = "https://v2.jokeapi.dev/joke/any";

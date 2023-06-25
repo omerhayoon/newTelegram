@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class Panel extends JPanel {
-    private Image background;
+    private  Image background;
     private Window  window;
     private static final int HEIGHT_BUTTON = 30,WIDTH_BUTTON=180,DELTA=10,X_LINE=10,Y_LINE=440,WIDTH_LINE=480,HEIGHT_LINE=20;
 
@@ -77,9 +77,9 @@ public class Panel extends JPanel {
         this.add(activityHistory);
         this.add(graph);
     }
-    public void addBackgroundPicture() {
+    public  void addBackgroundPicture() {
         try {
-            background=ImageIO.read(new File("src/main/java/org/example/telegram image.jpg"));
+            background=ImageIO.read(new File("src/main/java/Utility/telegram image.jpg"));
         } catch (IOException ex) {
             ex.printStackTrace();
         }

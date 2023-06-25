@@ -1,8 +1,13 @@
 package org.example;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
+
+import Utility.Utils;
 import io.quickchart.QuickChart;
 
 
@@ -11,7 +16,6 @@ public class Graph extends JPanel {
     private ImageIcon icon;
 
     public Graph(Window window) {
-
         this.window = window;
         JButton returnButton = new JButton("Return");
         returnButton.setBounds(50, 400, 100, 40);
@@ -59,5 +63,6 @@ public class Graph extends JPanel {
         super.paintComponent(g);
         g.drawImage(icon.getImage(), 0, 0, this);
     }
+
 }
 

@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class UserStatistics {
+public class UserStatistics  {
     private Window window;
     public static Integer countNumberAPI = 0;
     public static Integer countCatsAPI = 0;
@@ -17,6 +17,7 @@ public class UserStatistics {
 
 
     public UserStatistics() {
+
         showMessage("Most Activity - " + mostActivity() + "\n" +
                 mostActiveUser() + "\n" +
                 "Total request " + totalRequest());
@@ -68,6 +69,7 @@ public class UserStatistics {
     public static void showMessage(String message) {
         JOptionPane.showMessageDialog(null, message);
     }
+
 }
 
 

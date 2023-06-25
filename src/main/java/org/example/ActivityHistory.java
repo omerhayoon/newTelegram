@@ -1,5 +1,7 @@
 package org.example;
 
+import Utility.Utils;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.Queue;
@@ -19,15 +21,10 @@ public class ActivityHistory extends JPanel {
 
         JButton returnButton = new JButton("Return");
         returnButton.addActionListener(e -> window.mainPanel());
-
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         buttonPanel.add(returnButton);
 
-        JPanel contentPanel = new JPanel(new BorderLayout());
-        contentPanel.add(buttonPanel, BorderLayout.SOUTH);
-        contentPanel.add(scrollPane, BorderLayout.CENTER);
-
-        add(contentPanel, BorderLayout.CENTER);
+        add(buttonPanel, BorderLayout.NORTH);
 
         updateScreenThread();
     }

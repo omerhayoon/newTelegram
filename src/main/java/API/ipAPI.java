@@ -1,4 +1,6 @@
-package org.example;
+package API;
+
+import API.ApiPath;
 
 public class ipAPI {
 

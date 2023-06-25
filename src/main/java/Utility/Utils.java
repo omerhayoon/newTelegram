@@ -1,4 +1,4 @@
-package org.example;
+package Utility;
 
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -12,7 +12,7 @@ public class Utils {
     }
     public static void sleep(){
         try {
-            Thread.sleep(100);
+            Thread.sleep(number);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }

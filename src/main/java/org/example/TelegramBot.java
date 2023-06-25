@@ -1,5 +1,7 @@
 package org.example;
 
+import API.*;
+import Utility.Utils;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
@@ -113,7 +115,7 @@ public class TelegramBot extends TelegramLongPollingBot {
 
     }
     private void updateHistory(long chatId, String name,String callBack){
-        String updated = "Name: "+name+", ID: "+ chatId+", Interaction: "+callBack+",Time: "+Utils.getCurrentTime();
+        String updated = "Name: "+name+", ID: "+ chatId+", Interaction: "+callBack+",Time: "+ Utils.getCurrentTime();
         if(activityHistory.size()>=MAX_SIZE){
             activityHistory.poll();
         }
