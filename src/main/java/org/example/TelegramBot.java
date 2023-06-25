@@ -45,6 +45,9 @@ public class TelegramBot extends TelegramLongPollingBot {
 
     public void onUpdateReceived(Update update) {
         long chatId = getChatId(update);
+        String name = getName(update);
+        activityHistory.forEach(System.out::println);
+
         SendMessage sendMessage = new SendMessage();// פותח משתנה של הודעה
         Responder responder = this.responderMap.get(chatId);
         sendMessage.setChatId(chatId);// לשלוח את ההודעה לכתובת הרצוייה
@@ -53,20 +56,24 @@ public class TelegramBot extends TelegramLongPollingBot {
             switch (callBack) {
                 case ("NumberFact") -> {
                     UserStatistics.countNumberAPI++;
+                    System.out.println();
                     this.responderMap.get(chatId).updateAmountActivity();
                     sendMessage.setText("Sure, here is a number fact -\n" + NumbersFactAPI.NumbersFactAPI());
+                    updateHistory(chatId,this.responderMap.get(chatId).getName(),"NumberFact");
                     showButtons(sendMessage, ManagementActivities.telegramButtonList);
                 }
                 case ("catsAPI") -> {
                     UserStatistics.countCatsAPI++;
                     this.responderMap.get(chatId).updateAmountActivity();
                     sendMessage.setText("Sure, here is a Cat fact -\n" + CatFactAPI.catFactAPI());
+                    updateHistory(chatId,this.responderMap.get(chatId).getName(),"catsAPI");
                     showButtons(sendMessage, ManagementActivities.telegramButtonList);
                 }
                 case ("jokesAPI") -> {
                     UserStatistics.countJokesAPI++;
                     this.responderMap.get(chatId).updateAmountActivity();
                     sendMessage.setText("Sure, here is a Joke fact -\n" + JokesAPI.jokeAPI());
+                    updateHistory(chatId,this.responderMap.get(chatId).getName(),"jokesAPI");
                     showButtons(sendMessage, ManagementActivities.telegramButtonList);
                 }
 
@@ -74,6 +81,7 @@ public class TelegramBot extends TelegramLongPollingBot {
                     UserStatistics.countIpAPI++;
                     this.responderMap.get(chatId).updateAmountActivity();
                     sendMessage.setText("Sure, here is your ip -\n" + ipAPI.ipAPI());
+                    updateHistory(chatId,this.responderMap.get(chatId).getName(),"ipAPI");
                     showButtons(sendMessage, ManagementActivities.telegramButtonList);
                 }
                 case ("Trivia") -> {
@@ -92,8 +100,8 @@ public class TelegramBot extends TelegramLongPollingBot {
 
         } else {
             sendMessage.setChatId(chatId);// משתנה של ההודעה שולח לכתובת הרצוייה
-            if (responder == null) { // במידה ולא דיברנו תישמור את הכתובת והתגובה
-                responder = new Responder(chatId);
+            if (responder == null) { // במידה ולא דיברנו תשמור את הכתובת והתגובה
+                responder = new Responder(chatId, name);
                 this.responderMap.put(chatId, responder);
                 UserStatistics.amountUsers = (responderMap.size() + 1);
                 sendMessage.setText("Hey, Welcome to my bot!" + "\n" + // כותב את ההודעה
@@ -123,6 +131,17 @@ public class TelegramBot extends TelegramLongPollingBot {
         System.out.println(chatId);
         return chatId;
     }
+
+    private String getName(Update update) {
+        String name;
+        if (update.hasCallbackQuery()) { //אם הייתה לחיצה על כפתור
+            name = update.getCallbackQuery().getFrom().getFirstName();
+        } else {
+            name = update.getMessage().getFrom().getFirstName();
+        }
+        return name;
+    }
+
 
     public void send(SendMessage sendMessage) {
         try {
