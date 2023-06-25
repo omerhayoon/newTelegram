@@ -4,24 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="30bc2d16-9211-47aa-b9fc-92e3b1147299" name="Changes" comment="new">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/ActivityHistory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/UserStatistics.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Panel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Panel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/TelegramBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/TelegramBot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Window.java" afterDir="false" />
-    </list>
-    <list id="36c39f1e-2ea0-44df-bb81-74f46e79dc3c" name="Changes by aviha" comment="" />
-    <list id="6f07f5e6-bc20-4587-a616-7d4c82797d07" name="Changes by david" comment="Changes by david">
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ApiPath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ApiPath.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/JokesAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/JokesAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ManagementActivities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ManagementActivities.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/TelegramBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/TelegramBot.java" afterDir="false" />
-    </list>
-    <list id="143e32f5-66d2-4cbe-b00e-e9adf012acde" name="Changes by אביחי" comment="Changes by אביחיf">
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/TelegramBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/TelegramBot.java" afterDir="false" />
-    </list>
+    <list default="true" id="30bc2d16-9211-47aa-b9fc-92e3b1147299" name="Changes" comment="new" />
+    <list id="143e32f5-66d2-4cbe-b00e-e9adf012acde" name="Changes by אביחי" comment="Changes by אביחיf" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,33 +20,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/main/java/org/example/TelegramBot.java">
-      <ranges>
-        <range start1="9" end1="9" start2="9" end2="10" changelist="143e32f5-66d2-4cbe-b00e-e9adf012acde" />
-        <range start1="41" end1="42" start2="42" end2="42" changelist="30bc2d16-9211-47aa-b9fc-92e3b1147299" />
-        <range start1="44" end1="49" start2="44" end2="45" changelist="30bc2d16-9211-47aa-b9fc-92e3b1147299" />
-        <range start1="50" end1="51" start2="46" end2="47" changelist="30bc2d16-9211-47aa-b9fc-92e3b1147299" />
-        <range start1="52" end1="53" start2="48" end2="49" changelist="30bc2d16-9211-47aa-b9fc-92e3b1147299" />
-        <range start1="56" end1="60" start2="52" end2="56" changelist="30bc2d16-9211-47aa-b9fc-92e3b1147299" />
-        <range start1="61" end1="64" start2="57" end2="60" changelist="30bc2d16-9211-47aa-b9fc-92e3b1147299" />
-        <range start1="65" end1="69" start2="61" end2="65" changelist="30bc2d16-9211-47aa-b9fc-92e3b1147299" />
-        <range start1="71" end1="75" start2="67" end2="71" changelist="30bc2d16-9211-47aa-b9fc-92e3b1147299" />
-        <range start1="76" end1="78" start2="72" end2="74" changelist="30bc2d16-9211-47aa-b9fc-92e3b1147299" />
-        <range start1="79" end1="79" start2="75" end2="81" changelist="30bc2d16-9211-47aa-b9fc-92e3b1147299" />
-        <range start1="82" end1="83" start2="84" end2="84" changelist="30bc2d16-9211-47aa-b9fc-92e3b1147299" />
-        <range start1="90" end1="102" start2="91" end2="97" changelist="30bc2d16-9211-47aa-b9fc-92e3b1147299" />
-        <range start1="103" end1="103" start2="98" end2="99" changelist="30bc2d16-9211-47aa-b9fc-92e3b1147299" />
-        <range start1="105" end1="107" start2="101" end2="102" changelist="30bc2d16-9211-47aa-b9fc-92e3b1147299" />
-        <range start1="108" end1="109" start2="103" end2="104" changelist="30bc2d16-9211-47aa-b9fc-92e3b1147299" />
-        <range start1="110" end1="111" start2="105" end2="105" changelist="30bc2d16-9211-47aa-b9fc-92e3b1147299" />
-        <range start1="119" end1="119" start2="113" end2="114" changelist="30bc2d16-9211-47aa-b9fc-92e3b1147299" />
-        <range start1="121" end1="121" start2="116" end2="117" changelist="30bc2d16-9211-47aa-b9fc-92e3b1147299" />
-        <range start1="122" end1="124" start2="118" end2="118" changelist="6f07f5e6-bc20-4587-a616-7d4c82797d07" />
-        <range start1="133" end1="136" start2="127" end2="127" changelist="6f07f5e6-bc20-4587-a616-7d4c82797d07" />
-      </ranges>
-    </file>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -122,7 +79,7 @@
       <workItem from="1686559894016" duration="4872000" />
       <workItem from="1686661886586" duration="993000" />
       <workItem from="1687332570964" duration="10124000" />
-      <workItem from="1687358746790" duration="6402000" />
+      <workItem from="1687358746790" duration="6547000" />
     </task>
     <task id="LOCAL‎-00001" summary=".">
       <created>1686679992333</created>
@@ -194,7 +151,28 @@
       <option name="project" value="LOCAL‎" />
       <updated>1687342943385</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL‎-00011" summary="new">
+      <created>1687365284067</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL‎-00011" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1687365284067</updated>
+    </task>
+    <task id="LOCAL‎-00012" summary="Changes by david">
+      <created>1687365299301</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL‎-00012" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1687365299301</updated>
+    </task>
+    <task id="LOCAL‎-00013" summary="Changes by אביחיf">
+      <created>1687365309956</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL‎-00013" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1687365309956</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
