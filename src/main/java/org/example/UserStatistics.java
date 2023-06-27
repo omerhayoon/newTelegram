@@ -32,9 +32,10 @@ public class UserStatistics  {
         allActivity.put("Jokes API", countJokesAPI);
         allActivity.put("Ip API", countIpAPI);
         allActivity.put("Fact API", countTriviaAPI);
-        boolean hasActivity = allActivity.values().stream().anyMatch(count -> count > 0);
-        if (allActivity.values().stream().anyMatch(count -> count > 0)) {
-            return "No activity found";
+        if(allActivity.values().stream().reduce(Integer::sum).orElse(0)==0){
+            return  "No activity found";
+//        if (allActivity.values().stream().anyMatch(count -> count <= 0)) {
+//            return "No activity found";
         } else {
             return allActivity.entrySet()
                     .stream()

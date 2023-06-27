@@ -74,7 +74,7 @@ public class TelegramBot extends TelegramLongPollingBot {
                 case ("jokesAPI") -> {
                     UserStatistics.countJokesAPI++;
                     this.responderMap.get(chatId).updateAmountActivity();
-                    sendMessage.setText("Sure, here is a Joke fact -\n" + JokesAPI.jokeAPI());
+                    sendMessage.setText("Sure, here is a Joke -\n" + JokesAPI.jokeAPI());
                     updateHistory(chatId,this.responderMap.get(chatId).getName(),"jokesAPI");
                     showButtons(sendMessage, ManagementActivities.telegramButtonList);
                 }
